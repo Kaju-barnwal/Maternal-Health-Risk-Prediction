@@ -8,6 +8,8 @@
 
 📊 Dataset: It uses a tabular dataset containing clinical measurements for pregnant women. Key features include Age, SystolicBP, DiastolicBP, BS (blood sugar), BodyTemp, HeartRate, and a target RiskLevel with categories: low risk, mid risk, high risk.
 
+( Dataset taken from Kaggle. )
+
 🔎 Steps of Analysis
 1️⃣ Data Loading & Inspection
 
