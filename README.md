@@ -1,135 +1,126 @@
-Project Title
+🍼 Maternal Health Risk Prediction
+📌 Introduction
 
-Maternal Health Risk Prediction
+📝 Problem statement: Predict the maternal health risk category (low, mid, high) for pregnant women using clinical features (age, blood pressure, blood sugar, body temperature, heart rate, etc.).
 
-Introduction
+🎯 Objective: Build and compare classification models to predict maternal health risk and identify important predictors for early intervention.
 
-Problem statement: Predict the maternal health risk category (low, mid, high) for pregnant women using clinical features (age, blood pressure, blood sugar, body temperature, heart rate, etc.).
+📊 Dataset: Tabular dataset with features:
 
-Objective: Build and compare classification models to predict maternal health risk and identify important predictors to help with early intervention.
+Age 👩‍🦳
 
-Dataset description: The notebook uses a tabular dataset containing clinical measurements for pregnant women. Key features include Age, SystolicBP, DiastolicBP, BS (blood sugar), BodyTemp, HeartRate, and a target RiskLevel with categories: low risk, mid risk, high risk.
+SystolicBP & DiastolicBP 🫀
 
-Steps of Analysis
+Blood Sugar (BS) 🍬
 
-Data loading and initial inspection
+Body Temperature 🌡️
 
-Read the dataset into a DataFrame and view the first few rows.
+Heart Rate ❤️‍🔥
 
-Check data types, missing values, and basic statistics.
+Target → RiskLevel (Low, Mid, High)
 
-Data cleaning & preprocessing
+🔎 Steps of Analysis
+1️⃣ Data Loading & Inspection
 
-Handle missing values (if present).
+📥 Read dataset into DataFrame & view first rows
 
-Encode categorical target variable (RiskLevel).
+🔍 Check data types, missing values, basic stats
 
-Feature scaling where required for some models.
+2️⃣ Data Cleaning & Preprocessing
 
-Train/test split.
+🧹 Handle missing values
 
-Exploratory Data Analysis (EDA)
+🔐 Encode categorical target (RiskLevel)
 
-Class distribution for RiskLevel.
+⚖️ Scale features (if needed)
 
-Univariate summaries (histograms/boxplots) for numeric features.
+✂️ Train/test split
 
-Pairwise relationships/correlation heatmap to check collinearity and relationships with the target.
+3️⃣ Exploratory Data Analysis (EDA)
 
-Model building
+📦 Class distribution for RiskLevel
 
-Trained multiple classification models (as executed in the notebook):
+📈 Histograms & Boxplots → feature distributions & outliers
 
-Logistic Regression
+🔥 Correlation Heatmap → check multicollinearity
 
-Decision Tree Classifier
+🎨 Pairplots/Scatter plots → class separation
 
-Random Forest Classifier
+4️⃣ Model Building
 
-Support Vector Classifier (SVC)
+Models trained:
 
-For some models, multiple hyperparameter variants were evaluated (e.g. different Random Forest setups).
+📉 Logistic Regression
 
-Evaluation
+🌳 Decision Tree Classifier
 
-Used classification_report (precision, recall, f1-score) and accuracy.
+🌲 Random Forest Classifier
 
-Generated confusion matrices and plotted important visualizations.
+💡 Support Vector Classifier (SVC)
+➡️ Multiple hyperparameter runs for Random Forest & Decision Tree
 
-Explanation of Results:
+5️⃣ Evaluation
 
- Model accuracies observed are as follows:
+📑 Metrics: Accuracy, Precision, Recall, F1-score
 
-Logistic Regression: 61% accuracy
+🟦 Confusion Matrices with plots
 
-Decision Tree: ~86% accuracy (two evaluated variants)
+📊 Feature Importance (Random Forest)
 
-Random Forest: 87% and 88% accuracy (two hyperparameter runs)
+📈 Results
 
-SVC (Support Vector Classifier): 67% accuracy
+Logistic Regression: 61% ✅
 
-Overall findings: Random Forest performed best in these experiments (up to ~88% accuracy), meaning it made the fewest overall mistakes when predicting the three risk categories on the test set. Logistic Regression performed worst among the reported runs (61% accuracy), which suggests the relationship between features and risk level is not purely linear.
+Decision Tree: 86% 🌳
 
-Class-wise performance: The classification reports show that some classes (for example, mid risk) may have lower recall or f1-score in certain models — indicating those cases are harder for the model to correctly identify. The low risk and high risk classes generally achieved better precision/recall depending on model.
+Random Forest: 87–88% 🌲🔥 (Best performer)
 
-Explanation of Key Graphs / Plots
+SVC: 67% 💡
 
-(Insights into plots)
+🔎 Key Takeaways:
 
-Class distribution bar chart: Count of samples in each RiskLevel category.
+Random Forest gave the best accuracy (~88%) 🏆
 
-Pattern visible: The three classes are present with counts (approx. split shown). If one class is much larger, it may bias models.
+Logistic Regression performed worst (61%), showing non-linear patterns dominate
 
-Meaning: If classes are imbalanced, consider sampling strategies or metric choice (e.g., macro F1).
+Mid-risk class harder to identify → lower recall/F1 in some models
 
-Histograms / Boxplots for each feature plotted: Distribution of values for Age, SystolicBP, etc.
+Low & High risk performed better overall
 
-Pattern visible: Outliers or skewness in features (e.g., some high BP values).
+📊 Explanation of Key Graphs
 
-Meaning: Outliers may need handling; skewed features may benefit from transformation.
+📦 Class Distribution Bar Chart → shows balance/imbalance
 
-Correlation heatmap plotting: Pearson correlation coefficients between numeric features.
+📈 Histograms & Boxplots → reveal skewness/outliers (e.g., BP extremes)
 
-Pattern visible: If two features are highly correlated, this shows multicollinearity, which affects the model. To get rid of that, one feature can be dropped or combined.
+🔥 Correlation Heatmap → detect multicollinearity
 
-Pairplot / Scatter plots colored by RiskLevel plotting: Pairwise scatter plots with points colored by the target class.
+🎨 Pairplots → check feature separability by RiskLevel
 
-Pattern visible: Whether classes are separable in feature space; overlapping indicates harder classification.
+🌲 Feature Importance (RF) → SystolicBP, Age, etc. most predictive
 
-Meaning: Visual cue for model choice — if separable, simpler models may suffice.
+🟦 Confusion Matrix → shows which classes are confused (e.g., mid risk → low risk)
 
-Feature importance (Random Forest) plotting: Importance score of each feature from the Random Forest model.
+📏 Model Performance Metrics
 
-Pattern visible: Some features (e.g., SystolicBP or Age) may contribute more to predictions.
+Accuracy: 0.61, 0.86, 0.87, 0.88, 0.67
 
-Meaning: Useful for domain insights — prioritise monitoring of high-importance features clinically.
+Precision: Correctness of positive predictions
 
-The Confusion Matrix is plotted: Counts of true vs predicted classes.
+Recall: Coverage of actual positives
 
-Pattern visible: Which classes are most often confused (e.g., mid risk predicted as low risk).
+F1-Score: Balance of precision & recall
 
-Meaning: Helps identify where model mistakes cluster and guides error analysis or class-specific improvements.
+💡 Insight: A high precision but low recall on high risk → model misses cases but avoids false alarms
 
-Model Performance Metrics:
+🛠️ Technologies Used
 
-Accuracy: Fraction of correctly predicted samples. ( Values found by different models: 0.61, 0.86, 0.87, 0.88, 0.67 in various runs.)
+ Python 3
 
-Precision (per class): When the model predicted a class, how often it was correct.
+📦 Libraries:
 
-Recall (per class): Of all actual instances of a class, how many the model detected.
+pandas, numpy → data handling
 
-F1-score: Harmonic mean of precision and recall — useful when class balance matters.
+matplotlib, seaborn → visualization
 
-Use the per-class precision/recall/F1 to understand specific class behaviour — e.g., a high precision but low recall on high risk would mean the model is conservative (few false alarms) but misses some actual high-risk patients.
-
-Technologies Used
-
-Python 3
-
-Libraries:
-
-pandas, numpy (data handling)
-
-matplotlib, seaborn (visualization)
-
-scikit-learn (models, metrics)
+scikit-learn → models & evaluation
